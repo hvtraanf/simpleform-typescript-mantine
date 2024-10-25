@@ -86,11 +86,17 @@ const RegistrationForm = () => {
             required
             classNames={{
               input: "h-10 p-2 text-base cursor-pointer", // Tailwind for input field
-              calendarHeaderControl: "w-6 h-6 text-black", // Smaller buttons with black text
-              month: "max-w-lg p-4", // Tailwind for calendar width and padding
-              day: "text-sm p-2", // Smaller text size for days
-              weekday: "font-bold", // Bold weekdays
-              wrapper: "cursor-pointer",
+              calendarHeaderControl: "w-6 h-6 text-black items-center justify-center", // Smaller buttons with black text
+              calendarHeader: "flex items-center justify-between",
+              monthsList: "mantine-DatePickerInput-monthsList",
+              monthsListRow: "mantine-DatePickerInput-monthsListRow",
+              monthsListCell: "mantine-DatePickerInput-monthsListCell",
+              yearsList: "mantine-DatePickerInput-yearsList",
+              yearsListRow: "mantine-DatePickerInput-yearsListRow",
+              yearsListCell: "mantine-DatePickerInput-yearsListCell",
+              weekday: "mantine-DatePickerInput-weekday",
+              day: "mantine-DatePickerInput-day",
+              month: "mantine-DatePickerInput-month",
             }}
           />
 
