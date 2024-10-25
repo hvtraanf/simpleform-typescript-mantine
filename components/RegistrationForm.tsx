@@ -1,30 +1,32 @@
-import { useForm } from '@mantine/form';
-import { TextInput, Button, RadioGroup, Radio, Input } from '@mantine/core';
-import { DatePickerInput } from '@mantine/dates'; // Import DatePickerInput
-import { useState } from 'react'; // Import useState for managing date value
+import { useForm } from "@mantine/form";
+import { TextInput, Button, RadioGroup, Radio, Input } from "@mantine/core";
+import { DatePickerInput } from "@mantine/dates"; // Import DatePickerInput
+import { useState } from "react"; // Import useState for managing date value
 
 const RegistrationForm = () => {
   const [dob, setDob] = useState<Date | null>(null); // Manage state for the date input
 
   const form = useForm({
     initialValues: {
-      name: '',
-      phone: '',
+      name: "",
+      phone: "",
       dob: null, // Initialize dob as null for DatePickerInput
-      healthCheck: '',
-      drivingLicense: '',
-      confirmTestDate: '',
+      healthCheck: "",
+      drivingLicense: "",
+      confirmTestDate: "",
     },
     validate: {
-      name: (value) => (value.length < 2 ? 'Name must have at least 2 characters' : null),
-      phone: (value) => (/^\d+$/.test(value) ? null : 'Phone number must be numeric'),
-      dob: (value) => (value ? null : 'Date of birth is required'), // Validate dob as required
+      name: (value) =>
+        value.length < 2 ? "Name must have at least 2 characters" : null,
+      phone: (value) =>
+        /^\d+$/.test(value) ? null : "Phone number must be numeric",
+      dob: (value) => (value ? null : "Date of birth is required"), // Validate dob as required
     },
   });
 
   const handleDobChange = (date: Date | null) => {
     setDob(date); // Update the dob state
-    form.setFieldValue('dob', date); // Update the form's dob value
+    form.setFieldValue("dob", date); // Update the form's dob value
   };
 
   // Clear form handler
@@ -37,7 +39,9 @@ const RegistrationForm = () => {
     <div className="bg-white p-8 rounded-lg shadow-md">
       <div className="w-full max-w-lg bg-white p-8 rounded-lg shadow-md">
         <h1 className="text-center text-2xl font-bold mb-4">Đơn đăng ký</h1>
-        <p className="text-center text-gray-500 mb-6">Please fill out the form below.</p>
+        <p className="text-center text-gray-500 mb-6">
+          Please fill out the form below.
+        </p>
 
         {/* Submit the form and log the values */}
         <form
@@ -45,9 +49,14 @@ const RegistrationForm = () => {
             console.log({
               name: values.name,
               phone: values.phone,
+              healthCheck: values.healthCheck,
+              drivingLicense: values.drivingLicense,
+              confirmTestDate: values.confirmTestDate,
               dob: dob, // Log dob from the local state
             });
-            {handleClearForm()};
+            {
+              handleClearForm();
+            }
           })}
         >
           <TextInput
@@ -55,7 +64,7 @@ const RegistrationForm = () => {
             placeholder="Nhập họ và tên"
             required
             className="mb-4"
-            {...form.getInputProps('name')}
+            {...form.getInputProps("name")}
           />
 
           <TextInput
@@ -63,7 +72,7 @@ const RegistrationForm = () => {
             placeholder="Nhập số điện thoại"
             required
             className="mb-4"
-            {...form.getInputProps('phone')}
+            {...form.getInputProps("phone")}
           />
 
           {/* Date of Birth using DatePickerInput */}
@@ -87,7 +96,7 @@ const RegistrationForm = () => {
             label="Bạn đã khám sức khỏe chưa?"
             size="md"
             required
-            {...form.getInputProps('healthCheck')}
+            {...form.getInputProps("healthCheck")}
           >
             <Radio value="checked" label="Đã khám" />
             <Radio value="notChecked" label="Chưa khám" />
@@ -97,7 +106,7 @@ const RegistrationForm = () => {
             label="Bạn có bằng ô tô không?"
             required
             className="mb-4"
-            {...form.getInputProps('drivingLicense')}
+            {...form.getInputProps("drivingLicense")}
           >
             <Radio value="yes" label="Có" />
             <Radio value="no" label="Không" />
@@ -107,7 +116,7 @@ const RegistrationForm = () => {
             label="Xác nhận đăng ký lịch thi 17/10"
             required
             className="mb-4"
-            {...form.getInputProps('confirmTestDate')}
+            {...form.getInputProps("confirmTestDate")}
           >
             <Radio value="confirm" label="Xác nhận" />
           </RadioGroup>
