@@ -1,18 +1,16 @@
 import { useForm } from '@mantine/form';
 import { TextInput, Button, RadioGroup, Radio, Input } from '@mantine/core';
-import { DatePickerInput } from '@mantine/dates';
-import { useState } from 'react';
+import { DatePickerInput } from '@mantine/dates'; // Import DatePickerInput
+import { useState } from 'react'; // Import useState for managing date value
 
 const RegistrationForm = () => {
-  // Date state is properly typed as Date | null
-  const [dob, setDob] = useState<Date | null>(null);
+  const [dob, setDob] = useState<Date | null>(null); // Manage state for the date input
 
-  // useForm with dob as Date | null in initialValues
   const form = useForm({
     initialValues: {
       name: '',
       phone: '',
-      dob: null as Date | null, // Initialize dob as null
+      dob: null, // Initialize dob as null for DatePickerInput
       healthCheck: '',
       drivingLicense: '',
       confirmTestDate: '',
@@ -20,20 +18,19 @@ const RegistrationForm = () => {
     validate: {
       name: (value) => (value.length < 2 ? 'Name must have at least 2 characters' : null),
       phone: (value) => (/^\d+$/.test(value) ? null : 'Phone number must be numeric'),
-      dob: (value) => (value ? null : 'Date of birth is required'), // Validate dob
+      dob: (value) => (value ? null : 'Date of birth is required'), // Validate dob as required
     },
   });
 
-  // Correctly typed handler for DatePicker change
   const handleDobChange = (date: Date | null) => {
     setDob(date); // Update the dob state
     form.setFieldValue('dob', date); // Update the form's dob value
   };
 
-  // Clear form handler with proper reset for dob
+  // Clear form handler
   const handleClearForm = () => {
-    form.reset(); // Reset all form fields
-    setDob(null); // Clear the dob state
+    form.reset(); // Reset form fields
+    setDob(null); // Reset the dob state explicitly
   };
 
   return (
@@ -42,13 +39,23 @@ const RegistrationForm = () => {
         <h1 className="text-center text-2xl font-bold mb-4">Đơn đăng ký</h1>
         <p className="text-center text-gray-500 mb-6">Please fill out the form below.</p>
 
-        <form onSubmit={form.onSubmit((values) => console.log({ ...values, dob }))}>
+        {/* Submit the form and log the values */}
+        <form
+          onSubmit={form.onSubmit((values) => {
+            console.log({
+              name: values.name,
+              phone: values.phone,
+              dob: dob, // Log dob from the local state
+            });
+            {handleClearForm()};
+          })}
+        >
           <TextInput
             label="Họ và tên"
             placeholder="Nhập họ và tên"
             required
             className="mb-4"
-            {...form.getInputProps("name")}
+            {...form.getInputProps('name')}
           />
 
           <TextInput
@@ -56,7 +63,7 @@ const RegistrationForm = () => {
             placeholder="Nhập số điện thoại"
             required
             className="mb-4"
-            {...form.getInputProps("phone")}
+            {...form.getInputProps('phone')}
           />
 
           {/* Date of Birth using DatePickerInput */}
@@ -78,8 +85,9 @@ const RegistrationForm = () => {
 
           <RadioGroup
             label="Bạn đã khám sức khỏe chưa?"
+            size="md"
             required
-            {...form.getInputProps("healthCheck")}
+            {...form.getInputProps('healthCheck')}
           >
             <Radio value="checked" label="Đã khám" />
             <Radio value="notChecked" label="Chưa khám" />
@@ -89,7 +97,7 @@ const RegistrationForm = () => {
             label="Bạn có bằng ô tô không?"
             required
             className="mb-4"
-            {...form.getInputProps("drivingLicense")}
+            {...form.getInputProps('drivingLicense')}
           >
             <Radio value="yes" label="Có" />
             <Radio value="no" label="Không" />
@@ -99,7 +107,7 @@ const RegistrationForm = () => {
             label="Xác nhận đăng ký lịch thi 17/10"
             required
             className="mb-4"
-            {...form.getInputProps("confirmTestDate")}
+            {...form.getInputProps('confirmTestDate')}
           >
             <Radio value="confirm" label="Xác nhận" />
           </RadioGroup>
