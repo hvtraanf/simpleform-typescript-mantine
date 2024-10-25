@@ -86,7 +86,8 @@ const RegistrationForm = () => {
             required
             classNames={{
               input: "h-10 p-2 text-base cursor-pointer", // Tailwind for input field
-              calendarHeaderControl: "w-6 h-6 text-black items-center justify-center", // Smaller buttons with black text
+              calendarHeaderControl:
+                "w-6 h-6 text-black items-center justify-center", // Smaller buttons with black text
               calendarHeader: "flex items-center justify-between",
               monthsList: "mantine-DatePickerInput-monthsList",
               monthsListRow: "mantine-DatePickerInput-monthsListRow",

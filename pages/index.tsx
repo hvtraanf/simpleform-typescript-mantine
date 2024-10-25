@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Head from 'next/head';
+import Head from "next/head";
 import RegistrationForm from "@/components/RegistrationForm";
 
 const Home: NextPage = () => {
@@ -13,6 +13,6 @@ const Home: NextPage = () => {
       </div>
     </div>
   );
-}
+};
 
-export default  Home;
+export default Home;
