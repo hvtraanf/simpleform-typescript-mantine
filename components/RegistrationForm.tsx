@@ -47,7 +47,7 @@ const RegistrationForm = () => {
   return (
     <div
       className="bg-white p-16 rounded-lg shadow-md"
-      style={{ width: "30%", margin: "0 auto" }}
+      style={{ width: "100%", margin: "0 auto" }}
     >
       <div className="w-full bg-white p-12 rounded-lg shadow-md">
         <div className="w-full bg-blue-300 p-12 rounded-lg shadow-md">

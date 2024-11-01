@@ -2,52 +2,105 @@
 @tailwind components;
 @tailwind utilities;
 
+.mantine-DatePickerInput-calendarHeader {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 32px;
+  font-weight: bold;
+}
+
+.mantine-DatePickerInput-calendarHeaderControl {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Position the left arrow */
+.mantine-DatePickerInput-calendarHeaderControl[data-direction="previous"] {
+  left: 8px;
+}
+
+/* Position the right arrow */
+.mantine-DatePickerInput-calendarHeaderControl[data-direction="next"] {
+  right: 8px;
+}
+
+/* Style for the year grid */
 .mantine-DatePickerInput-yearsList {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Space between the columns */
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 10px; /* Space between years */
+  text-align: center;
 }
 
-.mantine-DatePickerInput-yearsListRow {
-  display: flex;
-  width: 100%; /* Ensure the row takes up the full width */
-  justify-content: space-between; /* Distribute cells evenly */
-}
-
+.mantine-DatePickerInput-yearsListRow,
 .mantine-DatePickerInput-yearsListCell {
-  flex: 1; /* Let each cell take up equal space */
-  text-align: center; /* Center-align the text */
-  padding: 5px; /* Add padding to prevent overlap */
-  box-sizing: border-box; /* Ensure padding is included in the width */
+  flex: 1;
+  text-align: center;
+  padding: 5px;
+  box-sizing: border-box;
+  font-weight: normal;
 }
 
+/* Align the weekday row */
+.mantine-DatePickerInput-weekdaysRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 equal-width columns for each day of the week */
+  text-align: center;
+  font-weight: bold;
+  padding: 8px 0;
+}
+
+/* Align the day grid */
+.mantine-DatePickerInput-monthRow {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr); /* 7 equal-width columns for each day */
+  text-align: center;
+  padding: 8px 0;
+}
+
+.mantine-DatePickerInput-day {
+  display: inline-block;
+  text-align: center;
+  padding: 8px 0;
+  font-weight: normal;
+}
+
+/* Adjust the month and year selection */
+.mantine-DatePickerInput-month {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+/* Styles for year and month lists */
+.mantine-DatePickerInput-yearsList,
 .mantine-DatePickerInput-monthsList {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px; /* Add spacing between the columns */
+  gap: 10px;
 }
 
+.mantine-DatePickerInput-yearsListRow,
 .mantine-DatePickerInput-monthsListRow {
   display: flex;
-  width: 100%; /* Ensure the row takes the full width */
-  justify-content: space-between; /* Spread out the cells evenly */
+  width: 100%;
+  justify-content: space-between;
 }
 
+.mantine-DatePickerInput-yearsListCell,
 .mantine-DatePickerInput-monthsListCell {
-  flex: 1; /* Let each cell take up equal space */
-  text-align: center; /* Center-align the text */
-  padding: 5px; /* Add padding to prevent overlap */
-  box-sizing: border-box; /* Ensure padding is included in the width */
-}
-
-.mantine-DatePickerInput-weekdaysRow {
-  text-align: center;
-  padding: 15px;
-}
-
-.mantine-DatePickerInput-monthRow {
+  flex: 1;
   text-align: center;
   padding: 5px;
+  box-sizing: border-box;
 }
 
 .cursor-pointer {
